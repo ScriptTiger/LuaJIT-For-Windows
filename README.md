@@ -35,7 +35,7 @@ An important note here is that, by default, if you are running multiple Lua scri
 
 For maximum flexibility, the `LJ4W_INTERPRETER` and/or `LJ4W_INTERPRETER_PATH` environmental variables can also be set, which act in the same way as the key-value pairs in the `lj4w.txt`. This can be useful to further speed up launch times or to specify things that can't be specified otherwise, such as alternative Lua implementations to use for bytecode files other than the defaults listed in the `lj4w.txt`, since custom headers cannot be added to bytecode files. If only the `LJ4W_INTERPRETER` is given, `LuaJIT-For-Windows.cmd` will attempt to set the `LJ4W_INTERPRETER_PATH` automatically by looking up the associated key-value pair in the `lj4w.txt`. Specifying the `LJ4W_INTERPRETER_PATH` explicitly will, alternatively, skip all lookups and go straight to launch the script using the interpreter at the path specified.
 
-**`LuaJIT-For-Windows.cmd` as a development environment**  
+**`LuaJIT-For-Windows.cmd` as a Development Environment**  
 When launching `LuaJIT-For-Windows.cmd` as a stand-alone script without any arguments, it will open a development environment where you will have access to all of the tools available within the LuaJIT For Windows package. So, whether you want to access LuaRocks to manage packages, access LuaJIT's REPL interface, access gcc or any of the other tools within the LLVM MinGW suite, you can do so immediately all from the same environment.
 
 For more ScriptTiger scripts and goodies, check out ScriptTiger's GitHub Pages website:  
