@@ -3,6 +3,9 @@
 # LuaJIT For Windows
 LuaJIT For Windows packages LuaJIT, LuaRocks, and a Mingw-w64 tool chain for a modern and easy-to-use all-in-one Lua solution that can be distributed as a standard Lua environment for any Lua workflow running on a 64-bit Windows platform.
 
+**Download the full pre-bundled self-extracting package here:**  
+https://github.com/ScriptTiger/LuaJIT-For-Windows/releases/latest
+
 **LuaJIT**  
 OpenResty's implementation of LuaJIT has been chosen since it's well maintained by a larger active contributor base as an ongoing branch of the original LuaJIT and therefore compatible with LuaJIT scripts and bytecode, compatible with Lua 5.1 scripts, as well as features additionally curated add-ons for an added bonus to keep you on the bleeding edge of Lua development.  
 https://github.com/openresty/luajit2
