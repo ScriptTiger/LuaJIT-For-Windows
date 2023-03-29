@@ -8,14 +8,14 @@ rem https://github.com/ScriptTiger/LuaJIT-For-Windows
 rem =====
 
 rem Write lj4w.config if does not exist
-if not exist "%APPDATA%\LuaRocks" md "%APPDATA%\LuaRocks"
-if not exist "%APPDATA%\LuaRocks\lj4w.txt" (
+if not exist "%APPDATA%\LJ4W" md "%APPDATA%\LJ4W"
+if not exist "%APPDATA%\LJ4W\lj4w.txt" (
 	(
 		echo default.all.interpreter=lj4w
 		echo default.lua.interpreter=lua
 		echo default.luajit.interpreter=lj4w
 		echo lj4w.interpreter=^"%~0^"
-	)>"%APPDATA%\LuaRocks\lj4w.txt"
+	) > "%APPDATA%\LJ4W\lj4w.txt"
 )
 
 rem If the LJ4W_INTERPRETER_PATH environmental variable is already set, launch directly
@@ -59,24 +59,24 @@ rem Clean up interpreter name
 set LJ4W_INTERPRETER=%LJ4W_INTERPRETER:~15%
 :launch_comment_header
 rem Check if the header is valid, report error and exit if not
-findstr /b /i %LJ4W_INTERPRETER%.interpreter "%APPDATA%\LuaRocks\lj4w.txt" > nul || (
+findstr /b /i %LJ4W_INTERPRETER%.interpreter "%APPDATA%\LJ4W\lj4w.txt" > nul || (
 	echo No "%LJ4W_INTERPRETER%" interpreter configured!
 	exit /b
 )
 rem Look up path for requested interpreter
-for /f "tokens=2 delims==" %%0 in ('findstr /b /i %LJ4W_INTERPRETER%.interpreter "%APPDATA%\LuaRocks\lj4w.txt"') do (
+for /f "tokens=2 delims==" %%0 in ('findstr /b /i %LJ4W_INTERPRETER%.interpreter "%APPDATA%\LJ4W\lj4w.txt"') do (
 	set LJ4W_INTERPRETER_PATH=%%~0
 	goto launch
 )
 
 :default.all.interpreter
 rem Look up path for default interpreter and launch
-for /f "tokens=2 delims==" %%0 in ('findstr /b /i default.all.interpreter "%APPDATA%\LuaRocks\lj4w.txt"') do (
-	findstr /b /i %%0.interpreter "%APPDATA%\LuaRocks\lj4w.txt" > nul || (
+for /f "tokens=2 delims==" %%0 in ('findstr /b /i default.all.interpreter "%APPDATA%\LJ4W\lj4w.txt"') do (
+	findstr /b /i %%0.interpreter "%APPDATA%\LJ4W\lj4w.txt" > nul || (
 		echo The "default.all.interpreter" is misconfigured!
 		exit /b
 	)
-	for /f "tokens=2 delims==" %%a in ('findstr /b /i %%0.interpreter "%APPDATA%\LuaRocks\lj4w.txt"') do (
+	for /f "tokens=2 delims==" %%a in ('findstr /b /i %%0.interpreter "%APPDATA%\LJ4W\lj4w.txt"') do (
 		set LJ4W_INTERPRETER=%%0
 		set LJ4W_INTERPRETER_PATH=%%~a
 		goto launch
@@ -85,12 +85,12 @@ for /f "tokens=2 delims==" %%0 in ('findstr /b /i default.all.interpreter "%APPD
 
 :default.luajit.interpreter
 rem Look up path for default LuaJIT interpreter and launch
-for /f "tokens=2 delims==" %%0 in ('findstr /b /i default.luajit.interpreter "%APPDATA%\LuaRocks\lj4w.txt"') do (
-	findstr /b /i %%0.interpreter "%APPDATA%\LuaRocks\lj4w.txt" > nul || (
+for /f "tokens=2 delims==" %%0 in ('findstr /b /i default.luajit.interpreter "%APPDATA%\LJ4W\lj4w.txt"') do (
+	findstr /b /i %%0.interpreter "%APPDATA%\LJ4W\lj4w.txt" > nul || (
 		echo The "default.luajit.interpreter" is misconfigured!
 		exit /b
 	)
-	for /f "tokens=2 delims==" %%a in ('findstr /b /i %%0.interpreter "%APPDATA%\LuaRocks\lj4w.txt"') do (
+	for /f "tokens=2 delims==" %%a in ('findstr /b /i %%0.interpreter "%APPDATA%\LJ4W\lj4w.txt"') do (
 		set LJ4W_INTERPRETER=%%0
 		set LJ4W_INTERPRETER_PATH=%%~a
 		goto launch
@@ -99,12 +99,12 @@ for /f "tokens=2 delims==" %%0 in ('findstr /b /i default.luajit.interpreter "%A
 
 :default.lua.interpreter
 rem Look up path for default Lua interpreter and launch
-for /f "tokens=2 delims==" %%0 in ('findstr /b /i default.lua.interpreter "%APPDATA%\LuaRocks\lj4w.txt"') do (
-	findstr /b /i %%0.interpreter "%APPDATA%\LuaRocks\lj4w.txt" > nul || (
+for /f "tokens=2 delims==" %%0 in ('findstr /b /i default.lua.interpreter "%APPDATA%\LJ4W\lj4w.txt"') do (
+	findstr /b /i %%0.interpreter "%APPDATA%\LJ4W\lj4w.txt" > nul || (
 		echo The "default.lua.interpreter" is misconfigured!
 		exit /b
 	)
-	for /f "tokens=2 delims==" %%a in ('findstr /b /i %%0.interpreter "%APPDATA%\LuaRocks\lj4w.txt"') do (
+	for /f "tokens=2 delims==" %%a in ('findstr /b /i %%0.interpreter "%APPDATA%\LJ4W\lj4w.txt"') do (
 		set LJ4W_INTERPRETER=%%0
 		set LJ4W_INTERPRETER_PATH=%%~a
 		goto launch
@@ -139,9 +139,9 @@ set LUADIR=%~dp0
 set LUADIR=%LUADIR:~,-1%
 
 rem Set paths
-set PATH=%LUADIR%\mingw\bin;%LUADIR%\lib;%LUADIR%\bin;%APPDATA%\LuaRocks\bin;%PATH%
-set LUA_PATH=%LUADIR%\lua\?.lua;%LUADIR%\lua\?\init.lua;%APPDATA%\LuaRocks\share\lua\5.1\?.lua;%APPDATA%\LuaRocks\share\lua\5.1\?\init.lua;%LUA_PATH%
-set LUA_CPATH=%APPDATA%\LuaRocks\lib\lua\5.1\?.dll;%LUA_CPATH%
+set PATH=%LUADIR%\mingw\bin;%LUADIR%\lib;%LUADIR%\bin;%APPDATA%\LJ4W\LuaRocks\bin;%PATH%
+set LUA_PATH=%LUADIR%\lua\?.lua;%LUADIR%\lua\?\init.lua;%APPDATA%\LJ4W\LuaRocks\share\lua\5.1\?.lua;%APPDATA%\LJ4W\LuaRocks\share\lua\5.1\?\init.lua;%LUA_PATH%
+set LUA_CPATH=%APPDATA%\LJ4W\LuaRocks\lib\lua\5.1\?.dll;%LUA_CPATH%
 
 rem If arguments are being sent, pass to LuaJIT and exit
 if not "%1"=="" (
@@ -150,8 +150,10 @@ if not "%1"=="" (
 )
 
 rem Prepare command prompt environment
+set APPDATA=%APPDATA%\LJ4W
+if not exist "%APPDATA%\LuaRocks" md "%APPDATA%\LuaRocks"
 if not exist "%APPDATA%\LuaRocks\default-lua-version.lua" echo return "5.1">"%APPDATA%\LuaRocks\default-lua-version.lua"
-if not exist "%APPDATA%\LuaRocks\config-5.1.lua" luarocks config > "%APPDATA%\LuaRocks\config-5.1.lua"
+if not exist "%APPDATA%\LuaRocks\config-5.1.lua" call luarocks config > "%APPDATA%\LuaRocks\config-5.1.lua"
 
 rem Command prompt
 echo ***** LuaJIT For Windows *****
