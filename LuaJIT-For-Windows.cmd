@@ -50,7 +50,7 @@ if /i not "%LJ4W_INTERPRETER:~,2%"=="--" (
 	set LJ4W_INTERPRETER=
 	goto default.all.interpreter
 )
-rem If header comment is not interpreter paramter, launcher default interpreter
+rem If header comment is not interpreter parameter, launcher default interpreter
 if /i not "%LJ4W_INTERPRETER:~,15%"=="--interpreter: " (
 	set LJ4W_INTERPRETER=
 	goto default.all.interpreter
@@ -145,7 +145,7 @@ set LUA_CPATH=%APPDATA%\LJ4W\LuaRocks\lib\lua\5.1\?.dll;%LUA_CPATH%
 
 rem If arguments are being sent, pass to LuaJIT and exit
 if not "%1"=="" (
-	call %LUADIR%\bin\luajit.exe %*
+	call "%LUADIR%\bin\luajit.exe" %*
 	exit /b
 )
 
