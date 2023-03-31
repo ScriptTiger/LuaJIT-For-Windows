@@ -24,8 +24,8 @@ if not "%LJ4W_INTERPRETER_PATH%" =="" goto launch
 rem If the LJ4W_INTERPRETER environmental variable is already set, find interpreter path and launch
 if not "%LJ4W_INTERPRETER%" =="" goto launch_comment_header
 
-rem If no arguments/file given, open default interpreter
-if "%1"=="" goto default.all.interpreter
+rem If no arguments/file given, open lj4w command prompt
+if "%1"=="" goto lj4w
 
 rem If argument given is not a file, pass to default interpreter
 if not exist "%~1" goto default.all.interpreter
