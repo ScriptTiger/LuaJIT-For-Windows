@@ -1,7 +1,7 @@
 [![Say Thanks!](https://img.shields.io/badge/Say%20Thanks-!-1EAEDB.svg)](https://docs.google.com/forms/d/e/1FAIpQLSfBEe5B_zo69OBk19l3hzvBmz3cOV6ol1ufjh0ER1q3-xd2Rg/viewform)
 
 # LuaJIT For Windows
-LuaJIT For Windows packages LuaJIT, LuaRocks, and a Mingw-w64 tool chain for a modern and easy-to-use all-in-one Lua solution that can be distributed as a standard Lua environment for any Lua workflow running on a 64-bit Windows platform.
+LuaJIT For Windows packages LuaJIT, LuaRocks, a Mingw-w64 tool chain, and git for a modern and easy-to-use all-in-one Lua solution that can be distributed as a standard Lua environment for any Lua workflow running on a 64-bit Windows platform.
 
 **Download the full pre-bundled self-extracting package here:**  
 https://github.com/ScriptTiger/LuaJIT-For-Windows/releases/latest
@@ -16,8 +16,12 @@ https://luarocks.org
 https://github.com/luarocks/luarocks
 
 **Mingw-w64**  
-For those familiar with cross-platform development, or for those who just love the tool, Mingw-w64 needs no introduction. LLVM MinGW brings the standard Mingw-w64 environment needed to compile various components that may come with LuaRocks packages, so having the MSVC suite installed is not necessary. And as an added bonus, it can also target i686, x86_64, armv7, as well as arm64 architectures from within the same environment.  
+For those familiar with cross-platform development, or for those who just love the tool, Mingw-w64 needs no introduction. LLVM MinGW brings the standard Mingw-w64 environment needed to compile various components that may come with LuaRocks packages, so having the MSVC suite installed is not necessary.  
 https://github.com/mstorsjo/llvm-mingw
+
+**git**  
+Another staple of open source, git provides the LuaJIT For Windows package the necessary functionality of interacting directly with git repositories using the git protocol.  
+https://git-scm.com/download/win
 
 # How it Works
 LuaJIT for Windows is designed with portability and flexibility in mind. Once the self-extracting package extracts LuaJIT For Windows to the directory of your choosing, you can immediately run it without any installation via the `LuaJIT-For-Windows.cmd`.

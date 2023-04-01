@@ -139,7 +139,7 @@ set LUADIR=%~dp0
 set LUADIR=%LUADIR:~,-1%
 
 rem Set paths
-set PATH=%LUADIR%\mingw\bin;%LUADIR%\lib;%LUADIR%\bin;%APPDATA%\LJ4W\LuaRocks\bin;%PATH%
+set PATH=%LUADIR%\tools\cmd;%LUADIR%\tools\PortableGit\mingw64\bin;%LUADIR%\tools\PortableGit\usr\bin;%LUADIR%\tools\mingw\bin;%LUADIR%\lib;%LUADIR%\bin;%APPDATA%\LJ4W\LuaRocks\bin;%PATH%
 set LUA_PATH=%LUADIR%\lua\?.lua;%LUADIR%\lua\?\init.lua;%APPDATA%\LJ4W\LuaRocks\share\lua\5.1\?.lua;%APPDATA%\LJ4W\LuaRocks\share\lua\5.1\?\init.lua;%LUA_PATH%
 set LUA_CPATH=%APPDATA%\LJ4W\LuaRocks\lib\lua\5.1\?.dll;%LUA_CPATH%
 
@@ -157,6 +157,6 @@ if not exist "%APPDATA%\LuaRocks\config-5.1.lua" call luarocks config > "%APPDAT
 
 rem Command prompt
 echo ***** LuaJIT For Windows *****
-for /f "tokens=*" %%0 in ('call luajit -v^&call luarocks --version ^| findstr /v main^&call gcc --version ^| findstr clang') do echo %%0
+for /f "tokens=*" %%0 in ('call luajit -v^&call luarocks --version ^| grep -v main^&call gcc --version ^| grep clang') do echo %%0
 echo.
 cmd /k
