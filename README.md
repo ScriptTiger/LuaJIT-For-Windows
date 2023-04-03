@@ -44,6 +44,8 @@ When launching `LuaJIT-For-Windows.cmd` as a stand-alone script without any argu
 
 An important note for the development environment is that the `APPDATA` environmental variable is changed to `%APPDATA%\LJ4W` during a session in order to ensure that LuaRocks and all of its components remain isolated from any pre-existing LuaRocks trees which may be present. This change is only in effect while using the development environment and does not affect scripts which are directly launched via the script launcher functionality.
 
+# More About ScriptTiger
+
 For more ScriptTiger scripts and goodies, check out ScriptTiger's GitHub Pages website:  
 https://scripttiger.github.io/
 
